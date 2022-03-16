@@ -24,6 +24,8 @@
  *	\brief      Home page of story top menu
  */
 
+
+
 // Load Dolibarr environment
 $res = 0;
 // Try main.inc.php into web root known defined into CONTEXT_DOCUMENT_ROOT (not always defined)
@@ -99,27 +101,21 @@ llxHeader("", $langs->trans("Espace de gestion des stories"));
 // Nom du titre de la section 'story'
 print load_fiche_titre($langs->trans("Espace de gestion des stories :"), '', 'story.png@story');
 
+
+print load_fiche_titre($transAreaType, $linkback, 'Stories');
+
+
 print '<div class="fichecenter"><div class="fichethirdleft">';
 
-
-
-
-
+/* BEGIN MODULEBUILDER LASTMODIFIED MYOBJECT */
 // Draft MyObject
 if (! empty($conf->story->enabled) && $user->rights->story->read)
 {
 	$langs->load("orders");
 
-	$sql = "SELECT c.rowid, c.ref, c.ref_client, c.total_ht, c.tva as total_tva, c.total_ttc, s.rowid as socid, s.nom as name, s.client, s.canvas";
-	$sql.= ", s.code_client";
-	$sql.= " FROM ".MAIN_DB_PREFIX."commande as c";
-	$sql.= ", ".MAIN_DB_PREFIX."societe as s";
-	if (! $user->rights->societe->client->voir && ! $socid) $sql.= ", ".MAIN_DB_PREFIX."societe_commerciaux as sc";
-	$sql.= " WHERE c.fk_soc = s.rowid";
-	$sql.= " AND c.fk_statut = 0";
-	$sql.= " AND c.entity IN (".getEntity('commande').")";
-	if (! $user->rights->societe->client->voir && ! $socid) $sql.= " AND s.rowid = sc.fk_soc AND sc.fk_user = ".((int) $user->id);
-	if ($socid)	$sql.= " AND c.fk_soc = ".((int) $socid);
+	$sql = "SELECT s.rowid, s.description, s.public_note, s.private_note";
+	$sql.= " FROM ".MAIN_DB_PREFIX."story_story as s";
+
 
 	$resql = $db->query($sql);
 	if ($resql)
@@ -158,7 +154,6 @@ if (! empty($conf->story->enabled) && $user->rights->story->read)
 			}
 			if ($total>0)
 			{
-
 				print '<tr class="liste_total"><td>'.$langs->trans("Total").'</td><td colspan="2" class="right">'.price($total)."</td></tr>";
 			}
 		}
@@ -178,14 +173,13 @@ if (! empty($conf->story->enabled) && $user->rights->story->read)
 }
 
 
-
 print '</div><div class="fichetwothirdright"><div class="ficheaddleft">';
 
 
 $NBMAX = $conf->global->MAIN_SIZE_SHORTLIST_LIMIT;
 $max = $conf->global->MAIN_SIZE_SHORTLIST_LIMIT;
 
-/* BEGIN MODULEBUILDER LASTMODIFIED MYOBJECT
+/* BEGIN MODULEBUILDER LASTMODIFIED MYOBJECT */
 // Last modified myobject
 if (! empty($conf->story->enabled) && $user->rights->story->read)
 {
@@ -238,7 +232,6 @@ if (! empty($conf->story->enabled) && $user->rights->story->read)
 		print "</table><br>";
 	}
 }
-*/
 
 print '</div></div></div>';
 

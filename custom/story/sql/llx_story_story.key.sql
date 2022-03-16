@@ -15,11 +15,6 @@
 
 
 -- BEGIN MODULEBUILDER INDEXES
-ALTER TABLE llx_story_story ADD INDEX idx_story_story_ref (ref);
-ALTER TABLE llx_story_story ADD INDEX idx_story_story_fk_soc (fk_soc);
-ALTER TABLE llx_story_story ADD INDEX idx_story_story_fk_project (fk_project);
-ALTER TABLE llx_story_story ADD CONSTRAINT llx_story_story_fk_user_creat FOREIGN KEY (fk_user_creat) REFERENCES llx_user(rowid);
-ALTER TABLE llx_story_story ADD INDEX idx_story_story_status (status);
 -- END MODULEBUILDER INDEXES
 
 --ALTER TABLE llx_story_story ADD UNIQUE INDEX uk_story_story_fieldxy(fieldx, fieldy);

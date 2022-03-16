@@ -45,7 +45,7 @@ class modStory extends DolibarrModules
 
 		// Id for module (must be unique).
 		// Use here a free id (See in Home -> System information -> Dolibarr for list of used modules id).
-		$this->numero = 500000; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
+		$this->numero = 500269; // TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve an id number for your module
 
 		// Key text used to identify module (for permissions, menus, etc...)
 		$this->rights_class = 'story';
@@ -302,7 +302,7 @@ class modStory extends DolibarrModules
 			'user'=>2, // 0=Menu for internal users, 1=external users, 2=both
 		);
 		/* END MODULEBUILDER TOPMENU */
-		/* BEGIN MODULEBUILDER LEFTMENU STORY
+		/* BEGIN MODULEBUILDER LEFTMENU STORY */
 		$this->menu[$r++]=array(
 			'fk_menu'=>'fk_mainmenu=story',      // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 			'type'=>'left',                          // This is a Top menu entry
@@ -321,7 +321,7 @@ class modStory extends DolibarrModules
 		$this->menu[$r++]=array(
 			'fk_menu'=>'fk_mainmenu=story,fk_leftmenu=story',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 			'type'=>'left',			                // This is a Left menu entry
-			'titre'=>'List_Story',
+			'titre'=>'Stories list',
 			'mainmenu'=>'story',
 			'leftmenu'=>'story_story_list',
 			'url'=>'/story/story_list.php',
@@ -335,7 +335,7 @@ class modStory extends DolibarrModules
 		$this->menu[$r++]=array(
 			'fk_menu'=>'fk_mainmenu=story,fk_leftmenu=story',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 			'type'=>'left',			                // This is a Left menu entry
-			'titre'=>'New_Story',
+			'titre'=>'New story',
 			'mainmenu'=>'story',
 			'leftmenu'=>'story_story_new',
 			'url'=>'/story/story_card.php?action=create',
@@ -346,48 +346,6 @@ class modStory extends DolibarrModules
 			'target'=>'',
 			'user'=>2,				                // 0=Menu for internal users, 1=external users, 2=both
 		);
-		*/
-
-        $this->menu[$r++]=array(
-            // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-            'fk_menu'=>'fk_mainmenu=story',
-            // This is a Left menu entry
-            'type'=>'left',
-            'titre'=>'List Product',
-            'mainmenu'=>'story',
-            'leftmenu'=>'story_product',
-            'url'=>'/story/product_list.php',
-            // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-            'langs'=>'story@story',
-            'position'=>1100+$r,
-            // Define condition to show or hide menu entry. Use '$conf->story->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-            'enabled'=>'$conf->story->enabled',
-            // Use 'perms'=>'$user->rights->story->level1->level2' if you want your menu with a permission rules
-            'perms'=>'1',
-            'target'=>'',
-            // 0=Menu for internal users, 1=external users, 2=both
-            'user'=>2,
-        );
-        $this->menu[$r++]=array(
-            // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
-            'fk_menu'=>'fk_mainmenu=story,fk_leftmenu=story_product',
-            // This is a Left menu entry
-            'type'=>'left',
-            'titre'=>'New Product',
-            'mainmenu'=>'story',
-            'leftmenu'=>'story_product',
-            'url'=>'/story/product_card.php?action=create',
-            // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
-            'langs'=>'story@story',
-            'position'=>1100+$r,
-            // Define condition to show or hide menu entry. Use '$conf->story->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
-            'enabled'=>'$conf->story->enabled',
-            // Use 'perms'=>'$user->rights->story->level1->level2' if you want your menu with a permission rules
-            'perms'=>'1',
-            'target'=>'',
-            // 0=Menu for internal users, 1=external users, 2=both
-            'user'=>2
-        );
 
 		/* END MODULEBUILDER LEFTMENU STORY */
 		// Exports profiles provided by this module
